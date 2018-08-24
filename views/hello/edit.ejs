@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="content-type" content="UTF-8">
+        <title><%= title%></title>
+        <link rel='stylesheet' href='/sytlesheets/style.css'>
+    </head>
+    <body>
+        <head>
+            <h1><%= title %></h1>
+        </head>
+        <div role=main>
+            <p><%= content %></p>
+            <form method="post" action="/hello/edit">
+            <input type="hidden" name="id" value="<%= mydata.id %>">
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <td><input type="text" name="name" value="<%= mydata.name%>"></td>
+                </tr>
+                <tr>
+                    <th>mail</th>
+                    <td><input type="text" name="mail" value="<%= mydata.mail%>"></td>
+                </tr>
+                <tr>
+                    <th>age</th>
+                    <td><input type="number" name="age" value="<%= mydata.age%>"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="更新"></td>
+                </tr>
+
+            </table>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title><%= title %></title>
+        <link rel='stylesheet' href="/stylesheets/style.css">
+        <script src="/jquery"></script>
+        <script>
+            $(document).ready(function(){
+                $('#btn').click(function(){
+                    var n = $('#num').val();
+                    $.getJSON("/ajax?id="+n,function(json){
+                        var msg = '<table>'+
+                            '<tr><th>名前</th>'+
+                            '<td>' + json.name + '</td></tr>'+
+                            '<tr><th>年齢</th>'+
+                            '<td>' + json.age + '</td></tr>'+
+                            '<tr><th>mail</th>'+
+                            '<td>' + json.mail + '</td></tr>'+
+                            '</table>';
+                        $('#msg').html(msg);
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <head>
+            <h1><%= title %></h1>
+        </head>
+        <div role="main">
+           <table>
+               <% for(var i in content) { %>
+            <tr>
+                <% var obj = content[i]; %>
+                <th><%= obj.id %></th>
+                <th><%= obj.name %></th>
+                <th><%= obj.mail %></th>
+                <th><%= obj.age %></th>
+            </tr>
+            <% } %>
+           </table>
+        </div>
+    </body>
+</html>
